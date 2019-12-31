@@ -2,7 +2,7 @@ const fetchData = async () => {
   const response = await axios.get('http://www.omdbapi.com/', {
     params: {
       apikey: 'e26fadcd',
-      s: 'avengers'
+      i: 'tt0848228'
     }
   });
 
