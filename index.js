@@ -6,6 +6,10 @@ const fetchData = async searchTerm => {
     }
   });
 
+  if (response.data.Error) {
+    return [];
+  }
+
   return response.data.Search;
 };
 
@@ -16,6 +20,7 @@ const onInput = async e => {
 
   for (let movie of movies) {
     const div = document.createElement('div');
+
     div.innerHTML = `
       <img src="${movie.Poster}" />
       <h1>${movie.Title}</h1>
