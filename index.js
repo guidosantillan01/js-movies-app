@@ -68,9 +68,23 @@ const onMovieSelect = async (movie, summaryElement, side) => {
 };
 
 const runComparison = () => {
-  // Find the first article element for each movie
-  // Run a comparison on the # of awards
-  // Then apply some styling to that 'article' element
+  const leftStats = document.querySelectorAll('#left-summary .notification');
+  const rightStats = document.querySelectorAll('#right-summary .notification');
+
+  leftStats.forEach((leftStat, index) => {
+    const rightStat = rightStats[index];
+
+    const leftValue = parseInt(leftStat.dataset.value);
+    const rightValue = parseInt(rightStat.dataset.value);
+
+    if (rightValue > leftValue) {
+      leftStat.classList.remove('is-primary');
+      leftStat.classList.add('is-warning');
+    } else {
+      rightStat.classList.remove('is-primary');
+      rightStat.classList.add('is-warning');
+    }
+  });
 };
 
 const movieTemplate = movieDetail => {
@@ -106,7 +120,7 @@ const movieTemplate = movieDetail => {
       </div>
     </article>
 
-    <article  data-value=${awards} class="notification is-primary">
+    <article data-value=${awards} class="notification is-primary">
       <p class="title">${movieDetail.Awards}</p>
       <p class="subtitle">Awards</p>
     </article>
