@@ -68,10 +68,21 @@ const onMovieSelect = async (movie, summaryElement, side) => {
 };
 
 const runComparison = () => {
-  console.log('Time for comparison');
+  // Find the first article element for each movie
+  // Run a comparison on the # of awards
+  // Then apply some styling to that 'article' element
 };
 
 const movieTemplate = movieDetail => {
+  const dollars = parseInt(
+    movieDetail.BoxOffice.replace(/\$/g, '').replace(/,/g, '')
+  );
+  const metascore = parseInt(movieDetail.Metascore);
+  const imdbRating = parseFloat(movieDetail.imdbRating);
+  const imdbVotes = parseInt(movieDetail.imdbVotes.replace(/,/g, ''));
+
+  console.log(metascore, imdbRating, imdbVotes);
+
   return `
     <article class="media">
       <figure class="media-left">
